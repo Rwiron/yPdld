@@ -13,7 +13,6 @@ def download_video(url, download_type):
     try:
         ydl_opts = {
             'outtmpl': os.path.join(tempdir, '%(title)s.%(ext)s'),
-            'ffmpeg_location': 'C:/ffmpeg/bin',  # Ensure this path points to the location of ffmpeg and ffprobe
         }
 
         if download_type == 'video':
