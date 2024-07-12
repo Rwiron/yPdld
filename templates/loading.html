@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Animation</title>
+    <link rel="stylesheet" href="/static/ldcss.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="animationWindow"></div>
+    </div>
+    <form
+      id="process-download-form"
+      action="/process_download"
+      method="post"
+      style="display: none"
+    >
+      <input type="hidden" name="url" value="{{ url }}" />
+      <input type="hidden" name="type" value="{{ download_type }}" />
+      <button type="submit">Submit</button>
+    </form>
+    <script src="/static/ldscript.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        document.getElementById("process-download-form").submit();
+      });
+    </script>
+  </body>
+</html>

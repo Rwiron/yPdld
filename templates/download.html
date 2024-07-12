@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <h1>YouTube Video Downloader</h1>
+    </header>
+    <div id="content" class="container">
+      <form id="download-form" action="/download" method="post">
+        <label for="url">YouTube Video URL:</label>
+        <input
+          type="text"
+          id="url"
+          name="url"
+          required
+          placeholder="Enter YouTube URL"
+        />
+        <label for="type">Download as:</label>
+        <select id="type" name="type" required>
+          <option value="" disabled selected>Select format</option>
+          <option value="video">Video (MP4)</option>
+          <option value="audio">Audio (MP3)</option>
+        </select>
+        <button type="submit"><i class="fas fa-download"></i> Download</button>
+      </form>
+      <div id="message">
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <footer>
+      <p>All rights reserved. Created by &copy; Wiron</p>
+    </footer>
+    <script>
+      document
+        .getElementById("download-form")
+        .addEventListener("submit", function () {
+          setTimeout(function () {
+            document.getElementById("download-form").reset();
+          }, 1000); // Clear form 1 second after submission
+        });
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var messageElement = document.getElementById("message");
+          if (messageElement) {
+            messageElement.innerHTML = "";
+          }
+        }, 5000); // 5 seconds
+      });
+    </script>
+  </body>
+</html>
